@@ -15,9 +15,12 @@ const Hero = () => {
     <section className="relative flex flex-col justify-center items-center px-4 min-h-screen overflow-hidden text-center">
       <BreathingBackground />
       <StaticBackground />
-      <h1 className="mb-4 font-bold text-white text-4xl md:text-6xl">
-        // German Kostiakov
-      </h1>
+      <div className="flex flex-row justify-center items-center gap-3 ml-10">
+        <h1 className="pb-7 font-bold text-white text-4xl md:text-5xl">//</h1>
+        <h1 className="mb-4 font-bold text-white text-4xl md:text-6xl">
+          German Kostiakov
+        </h1>
+      </div>
       <h2 className="mb-6 text-purple-100 text-xl md:text-2xl">
         Full-Stack Developer
       </h2>
