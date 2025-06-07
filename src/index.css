@@ -1,1 +1,38 @@
 @import "tailwindcss";
+/* Add this to the top of your index.css */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Set Space Grotesk for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Set Inter for body text and everything else */
+body,
+p,
+span,
+div,
+button,
+input,
+textarea {
+  font-family: "Inter", sans-serif;
+}
+
+/* Optional: Set default font weights */
+h1 {
+  font-weight: 700;
+}
+h2 {
+  font-weight: 600;
+}
+h3 {
+  font-weight: 600;
+}
+body {
+  font-weight: 400;
+}
