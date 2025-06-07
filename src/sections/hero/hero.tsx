@@ -16,7 +16,7 @@ const Hero = () => {
       <BreathingBackground />
       <StaticBackground />
       <h1 className="mb-4 font-bold text-white text-4xl md:text-6xl">
-        German Kostiakov
+        // German Kostiakov
       </h1>
       <h2 className="mb-6 text-purple-100 text-xl md:text-2xl">
         Full-Stack Developer
