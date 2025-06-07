@@ -1,3 +1,5 @@
+import { BreathingBackground, StaticBackground } from "./components";
+
 const Hero = () => {
   const handleViewWork = () => {
     // Logic to handle viewing work
@@ -10,7 +12,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center px-4 min-h-screen text-center">
+    <section className="relative flex flex-col justify-center items-center px-4 min-h-screen overflow-hidden text-center">
+      <BreathingBackground />
+      <StaticBackground />
       <h1 className="mb-4 font-bold text-gray-900 text-4xl md:text-6xl">
         German Kostiakov
       </h1>
