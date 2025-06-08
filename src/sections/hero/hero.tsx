@@ -1,4 +1,8 @@
-import { BreathingBackground, StaticBackground } from "./components";
+import {
+  BreathingBackground,
+  StaticBackground,
+  SymbolsBackground,
+} from "./components";
 
 const Hero = () => {
   const handleViewWork = () => {
@@ -14,6 +18,7 @@ const Hero = () => {
   return (
     <section className="relative flex flex-col justify-center items-center px-4 min-h-screen overflow-hidden text-center">
       <BreathingBackground />
+      <SymbolsBackground />
       <StaticBackground />
       <div className="flex flex-row justify-center items-center gap-3 ml-10">
         <h1 className="pb-7 font-bold text-white text-4xl md:text-5xl">//</h1>
