@@ -36,3 +36,23 @@ h3 {
 body {
   font-weight: 400;
 }
+
+@keyframes stepBlink {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  90%,
+  100% {
+    opacity: 1;
+  }
+}
