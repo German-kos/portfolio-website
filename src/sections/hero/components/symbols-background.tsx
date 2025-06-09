@@ -81,7 +81,7 @@ const SymbolsBackground = () => {
         symbol: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
         angle: angle,
         distance: 500 + Math.random() * 400,
-        duration: 15 + Math.random() * 10,
+        duration: 5 + Math.random() * 4,
         delay: Math.random() * 2,
         size: getSymbolSize(),
         opacity: 0.3 + Math.random() * 0.4,
@@ -94,7 +94,7 @@ const SymbolsBackground = () => {
       symbol: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
       angle: 90 + Math.random() * 180,
       distance: 600 + Math.random() * 300,
-      duration: 18 + Math.random() * 8,
+      duration: 6 + Math.random() * 4,
       delay: Math.random() * 2,
       size: getSymbolSize(),
       opacity: 0.3 + Math.random() * 0.4,
@@ -106,7 +106,7 @@ const SymbolsBackground = () => {
       symbol: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
       angle: (270 + Math.random() * 180) % 360,
       distance: 600 + Math.random() * 300,
-      duration: 18 + Math.random() * 8,
+      duration: 6 + Math.random() * 4,
       delay: Math.random() * 2,
       size: getSymbolSize(),
       opacity: 0.3 + Math.random() * 0.4,
@@ -114,14 +114,14 @@ const SymbolsBackground = () => {
     });
 
     const initialSymbols: Symbol[] = [
-      ...Array.from({ length: 6 }, createRadialSymbol),
-      ...Array.from({ length: 6 }, createLeftSymbol),
-      ...Array.from({ length: 6 }, createRightSymbol),
+      ...Array.from({ length: 12 }, createRadialSymbol),
+      ...Array.from({ length: 12 }, createLeftSymbol),
+      ...Array.from({ length: 12 }, createRightSymbol),
     ];
 
     initialSymbols.forEach((symbol, index) => {
-      symbol.delay = index * 0.15;
-      symbol.createdAt = Date.now();
+      symbol.delay = index * 0.08;
+      symbol.createdAt = Date.now() - index * 100;
     });
 
     setSymbols(initialSymbols);
@@ -129,9 +129,9 @@ const SymbolsBackground = () => {
     const interval = setInterval(() => {
       setSymbols((prev) => {
         const now = Date.now();
-        const maxSymbols = 50;
-        const maxAge = 25000;
-        const fadeOutAge = 20000;
+        const maxSymbols = 120;
+        const maxAge = 7000;
+        const fadeOutAge = 6000;
 
         let updatedSymbols = prev.map((symbol) => {
           const age = now - (symbol.createdAt || now);
@@ -173,7 +173,7 @@ const SymbolsBackground = () => {
 
         return [...updatedSymbols, newSymbol];
       });
-    }, 300 + Math.random() * 400);
+    }, 120 + Math.random() * 150);
 
     return () => clearInterval(interval);
   }, []);
@@ -205,36 +205,28 @@ const SymbolsBackground = () => {
               animate={{
                 x: endX,
                 y: endY,
-                opacity: symbol.isRemoving
-                  ? 0
-                  : [0, symbol.opacity, symbol.opacity, 0],
-                rotate: 360 + Math.random() * 360,
-                scale: symbol.isRemoving ? 0.2 : [0.3, 1, 1, 0.8],
+                opacity: symbol.isRemoving ? 0 : symbol.opacity,
+                rotate: symbol.isRemoving ? 0 : 180 + Math.random() * 180,
+                scale: symbol.isRemoving ? 0.2 : 1,
               }}
               transition={{
                 duration: symbol.isRemoving ? 1.5 : symbol.duration,
                 delay: symbol.isRemoving ? 0 : symbol.delay,
-                ease: symbol.isRemoving ? "easeOut" : [0.25, 0.46, 0.45, 0.94],
-                opacity: symbol.isRemoving
-                  ? {
-                      duration: 1.5,
-                      ease: "easeOut",
-                    }
-                  : {
-                      times: [0, 0.1, 0.6, 1],
-                      duration: symbol.duration,
-                      ease: "easeOut",
-                    },
-                scale: symbol.isRemoving
-                  ? {
-                      duration: 1.5,
-                      ease: "easeOut",
-                    }
-                  : {
-                      times: [0, 0.3, 0.9, 1],
-                      duration: symbol.duration,
-                      ease: "easeOut",
-                    },
+                ease: symbol.isRemoving ? "easeOut" : [0.05, 0.9, 0.9, 1.0],
+                rotate: {
+                  duration: symbol.isRemoving ? 1.5 : symbol.duration,
+                  ease: symbol.isRemoving ? "easeOut" : "easeInOut",
+                },
+                opacity: {
+                  duration: symbol.isRemoving ? 1.5 : 0.5,
+                  delay: symbol.isRemoving ? 0 : symbol.delay,
+                  ease: symbol.isRemoving ? "easeOut" : "easeIn",
+                },
+                scale: {
+                  duration: symbol.isRemoving ? 1.5 : 0.8,
+                  delay: symbol.isRemoving ? 0 : symbol.delay,
+                  ease: symbol.isRemoving ? "easeOut" : "easeOut",
+                },
               }}
               onAnimationComplete={() => handleAnimationComplete(symbol.id)}
               style={{
