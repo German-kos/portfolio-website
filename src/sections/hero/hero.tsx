@@ -135,7 +135,7 @@ const Hero = () => {
       >
         <motion.button
           onClick={handleViewWork}
-          className="bg-rose-400 hover:bg-rose-500 px-6 py-3 rounded-lg text-white transition-colors"
+          className="bg-rose-400 hover:bg-rose-500 px-6 py-3 rounded-lg text-white transition-colors hover:cursor-pointer"
           variants={leftButtonWiggleVariants}
           animate={showButtons ? "wiggle" : ""}
           whileHover={{ scale: 1.05 }}
@@ -145,7 +145,7 @@ const Hero = () => {
         </motion.button>
         <motion.button
           onClick={handleLearnMore}
-          className="hover:bg-rose-400/10 px-6 py-3 border border-rose-300 rounded-lg text-rose-200 transition-colors"
+          className="hover:bg-rose-400/10 px-6 py-3 border border-rose-300 rounded-lg text-rose-200 transition-colors hover:cursor-pointer"
           variants={rightButtonWiggleVariants}
           animate={showButtons ? "wiggle" : ""}
           whileHover={{ scale: 1.05 }}
