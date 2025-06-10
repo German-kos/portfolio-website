@@ -33,7 +33,6 @@ const Hero = () => {
       setShowName(true);
       setCurrentSection("name");
 
-      // Track name typing progress
       let nameIndex = 0;
       const nameInterval = setInterval(() => {
         setTypingIndex(nameIndex);
@@ -80,6 +79,32 @@ const Hero = () => {
   const containerAnimation = {
     hidden: {},
     visible: {},
+  };
+
+  const leftButtonWiggleVariants = {
+    wiggle: {
+      rotate: [0, -5, 5, -3, 3, -2, 2, 0],
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatDelay: 6.6,
+        delay: 5,
+      },
+    },
+  };
+
+  const rightButtonWiggleVariants = {
+    wiggle: {
+      rotate: [0, -5, 5, -3, 3, -2, 2, 0],
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatDelay: 6.6,
+        delay: 6.6,
+      },
+    },
   };
 
   return (
@@ -156,18 +181,26 @@ const Hero = () => {
         animate={{ opacity: showButtons ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       >
-        <button
+        <motion.button
           onClick={handleViewWork}
           className="bg-rose-400 hover:bg-rose-500 px-6 py-3 rounded-lg text-white transition-colors"
+          variants={leftButtonWiggleVariants}
+          animate={showButtons ? "wiggle" : ""}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           View My Work
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={handleLearnMore}
           className="hover:bg-rose-400/10 px-6 py-3 border border-rose-300 rounded-lg text-rose-200 transition-colors"
+          variants={rightButtonWiggleVariants}
+          animate={showButtons ? "wiggle" : ""}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Learn More About Me
-        </button>
+        </motion.button>
       </motion.div>
     </section>
   );
