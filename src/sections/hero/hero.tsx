@@ -1,24 +1,28 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   BreathingBackground,
   StaticBackground,
   SymbolsBackground,
 } from "./components";
+import { useTypingAnimation } from "./hooks";
+import {
+  DELAYS,
+  FADE_DURATION,
+  TYPING_SECTIONS,
+  WIGGLE_ANIMATION,
+} from "./constants";
 
 const Hero = () => {
-  const [showName, setShowName] = useState(false);
-  const [showRole, setShowRole] = useState(false);
-  const [showDescription, setShowDescription] = useState(false);
-  const [showButtons, setShowButtons] = useState(false);
-  const [typingIndex, setTypingIndex] = useState(0);
-  const [currentSection, setCurrentSection] = useState<
-    "name" | "role" | "description" | "complete"
-  >("name");
+  const typingState = useTypingAnimation(TYPING_SECTIONS, DELAYS.INITIAL);
 
-  const fullName = "German Kostiakov";
-  const fullRole = "Full-Stack Developer";
-  const fullDescription = "Ready to bring your digital ideas to life";
+  const {
+    showName,
+    showRole,
+    showDescription,
+    showButtons,
+    typingIndex,
+    currentSection,
+  } = typingState;
 
   const handleViewWork = () => {
     console.log("Viewing work...");
@@ -28,83 +32,56 @@ const Hero = () => {
     console.log("Learning more about me...");
   };
 
-  useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setShowName(true);
-      setCurrentSection("name");
-
-      let nameIndex = 0;
-      const nameInterval = setInterval(() => {
-        setTypingIndex(nameIndex);
-        if (nameIndex >= fullName.length) {
-          clearInterval(nameInterval);
-          setTimeout(() => {
-            setCurrentSection("role");
-            setTimeout(() => setShowRole(true), 50);
-
-            let roleIndex = 0;
-            const roleInterval = setInterval(() => {
-              setTypingIndex(roleIndex);
-              if (roleIndex >= fullRole.length) {
-                clearInterval(roleInterval);
-                setTimeout(() => {
-                  setCurrentSection("description");
-                  setTimeout(() => setShowDescription(true), 50);
-
-                  let descIndex = 0;
-                  const descInterval = setInterval(() => {
-                    setTypingIndex(descIndex);
-                    if (descIndex >= fullDescription.length) {
-                      clearInterval(descInterval);
-                      setTimeout(() => {
-                        setCurrentSection("complete");
-                        setShowButtons(true);
-                      }, 50);
-                    }
-                    descIndex++;
-                  }, 12);
-                }, 50);
-              }
-              roleIndex++;
-            }, 15);
-          }, 100);
-        }
-        nameIndex++;
-      }, 40);
-    }, 200);
-
-    return () => clearTimeout(timer1);
-  }, []);
-
-  const containerAnimation = {
-    hidden: {},
-    visible: {},
-  };
-
   const leftButtonWiggleVariants = {
     wiggle: {
-      rotate: [0, -5, 5, -3, 3, -2, 2, 0],
+      rotate: WIGGLE_ANIMATION.ROTATION_PATTERN,
       transition: {
-        duration: 0.6,
-        ease: "easeInOut",
+        duration: WIGGLE_ANIMATION.DURATION,
+        ease: "easeInOut" as const,
         repeat: Infinity,
-        repeatDelay: 6.6,
-        delay: 5,
+        repeatDelay: WIGGLE_ANIMATION.REPEAT_DELAY,
+        delay: WIGGLE_ANIMATION.INITIAL_DELAY,
       },
     },
   };
 
   const rightButtonWiggleVariants = {
     wiggle: {
-      rotate: [0, -5, 5, -3, 3, -2, 2, 0],
+      rotate: WIGGLE_ANIMATION.ROTATION_PATTERN,
       transition: {
-        duration: 0.6,
-        ease: "easeInOut",
+        duration: WIGGLE_ANIMATION.DURATION,
+        ease: "easeInOut" as const,
         repeat: Infinity,
-        repeatDelay: 6.6,
-        delay: 6.6,
+        repeatDelay: WIGGLE_ANIMATION.REPEAT_DELAY,
+        delay: WIGGLE_ANIMATION.INITIAL_DELAY + WIGGLE_ANIMATION.STAGGER_DELAY,
       },
     },
+  };
+
+  const containerAnimation = {
+    hidden: {},
+    visible: {},
+  };
+
+  // Helper function to render typing text
+  const renderTypingText = (
+    text: string,
+    isVisible: boolean,
+    sectionName: "name" | "role" | "description"
+  ) => {
+    return text.split("").map((char, index) => (
+      <span
+        key={index}
+        className={`${
+          (currentSection === sectionName && index < typingIndex) ||
+          (currentSection !== sectionName && isVisible)
+            ? "opacity-100"
+            : "opacity-0"
+        }`}
+      >
+        {char}
+      </span>
+    ));
   };
 
   return (
@@ -112,6 +89,8 @@ const Hero = () => {
       <BreathingBackground />
       <SymbolsBackground />
       <StaticBackground />
+
+      {/* Name Section */}
       <div className="flex flex-row justify-center items-center gap-3 ml-10">
         <h1
           className="pb-7 font-bold text-white text-4xl md:text-5xl"
@@ -127,59 +106,32 @@ const Hero = () => {
           initial="hidden"
           animate={showName ? "visible" : "hidden"}
         >
-          {fullName.split("").map((char, index) => (
-            <motion.span
-              key={index}
-              className={`${
-                (currentSection === "name" && index < typingIndex) ||
-                (currentSection !== "name" && showName)
-                  ? "opacity-100"
-                  : "opacity-0"
-              }`}
-            >
-              {char}
-            </motion.span>
-          ))}
+          {renderTypingText(TYPING_SECTIONS[0].text, showName, "name")}
         </motion.h1>
       </div>
+
+      {/* Role Section */}
       <h2 className="mb-6 min-h-[2rem] text-purple-100 text-xl md:text-2xl">
         {showRole &&
-          fullRole.split("").map((char, index) => (
-            <span
-              key={index}
-              className={`${
-                (currentSection === "role" && index < typingIndex) ||
-                (currentSection === "description" && showRole) ||
-                (currentSection === "complete" && showRole)
-                  ? "opacity-100"
-                  : "opacity-0"
-              }`}
-            >
-              {char}
-            </span>
-          ))}
+          renderTypingText(TYPING_SECTIONS[1].text, showRole, "role")}
       </h2>
+
+      {/* Description Section */}
       <p className="mb-8 max-w-md min-h-[1.75rem] text-purple-200 text-lg">
         {showDescription &&
-          fullDescription.split("").map((char, index) => (
-            <span
-              key={index}
-              className={`${
-                (currentSection === "description" && index < typingIndex) ||
-                (currentSection === "complete" && showDescription)
-                  ? "opacity-100"
-                  : "opacity-0"
-              }`}
-            >
-              {char}
-            </span>
-          ))}
+          renderTypingText(
+            TYPING_SECTIONS[2].text,
+            showDescription,
+            "description"
+          )}
       </p>
+
+      {/* Buttons */}
       <motion.div
         className="flex gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: showButtons ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: FADE_DURATION }}
       >
         <motion.button
           onClick={handleViewWork}
