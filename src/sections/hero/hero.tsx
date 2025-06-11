@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  BreathingBackground,
-  StaticBackground,
-  SymbolsBackground,
-} from "./components";
+import { ResponsiveBackground } from "./components";
 import { useTypingAnimation } from "./hooks";
 import {
   DELAYS,
@@ -86,9 +82,8 @@ const Hero = () => {
 
   return (
     <section className="relative flex flex-col justify-center items-center px-4 min-h-screen overflow-hidden text-center">
-      <BreathingBackground />
-      <SymbolsBackground />
-      <StaticBackground />
+      {/* Background */}
+      <ResponsiveBackground />
 
       {/* Name Section */}
       <div className="flex flex-row justify-center items-center gap-3 ml-10">
