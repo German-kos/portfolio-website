@@ -1,7 +1,10 @@
+import {
+  BreathingBackground,
+  StaticBackground,
+  StaticGradientBackground,
+  SymbolsBackground,
+} from ".";
 import { useIsMobile } from "../../../hooks";
-import BreathingBackground from "./breathing-background";
-import StaticBackground from "./static-background";
-import SymbolsBackground from "./symbols-background";
 
 const ResponsiveBackground = () => {
   const isMobile = useIsMobile();
@@ -9,7 +12,7 @@ const ResponsiveBackground = () => {
   return (
     <>
       {isMobile ? (
-        <>Insert background component here</>
+        <StaticGradientBackground />
       ) : (
         <>
           <BreathingBackground />
