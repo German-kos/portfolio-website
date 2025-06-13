@@ -81,14 +81,14 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex flex-col justify-center items-center px-4 min-h-screen overflow-hidden text-center">
+    <section className="relative flex flex-col md:justify-center md:items-center px-4 min-h-screen overflow-hidden md:text-center">
       {/* Background */}
       <ResponsiveBackground />
 
       {/* Name Section */}
-      <div className="flex flex-row justify-center items-center gap-3 ml-10">
+      <div className="flex flex-row md:justify-center md:items-center gap-3 md:ml-10">
         <h1
-          className="pb-7 font-bold text-white text-4xl md:text-5xl"
+          className="pb-7 font-bold text-white text-3xl md:text-5xl"
           style={{
             animation: "stepBlink 2s infinite",
           }}
@@ -96,7 +96,7 @@ const Hero = () => {
           //
         </h1>
         <motion.h1
-          className="mb-4 font-bold text-white text-4xl md:text-6xl"
+          className="mb-4 font-bold text-[28px] text-white md:text-6xl"
           variants={containerAnimation}
           initial="hidden"
           animate={showName ? "visible" : "hidden"}
@@ -106,7 +106,7 @@ const Hero = () => {
       </div>
 
       {/* Role Section */}
-      <h2 className="mb-6 min-h-[2rem] text-purple-100 text-xl md:text-2xl">
+      <h2 className="mb-6 min-h-[2rem] text-purple-100 text-lg md:text-2xl">
         {showRole &&
           renderTypingText(TYPING_SECTIONS[1].text, showRole, "role")}
       </h2>
@@ -123,7 +123,7 @@ const Hero = () => {
 
       {/* Buttons */}
       <motion.div
-        className="flex gap-4"
+        className="flex flex-col gap-6 md:gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: showButtons ? 1 : 0 }}
         transition={{ duration: FADE_DURATION }}
