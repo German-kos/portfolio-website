@@ -151,7 +151,7 @@ const Hero = () => {
         </motion.button>
       </motion.div>
       {/* Shape Divider */}
-      <ShapeDivider fill="fill-white" />
+      <ShapeDivider fill="fill-slate-100" id="hero" />
     </section>
   );
 };
