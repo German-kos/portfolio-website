@@ -81,14 +81,14 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex flex-col md:justify-center md:items-center px-4 min-h-screen overflow-hidden md:text-center">
+    <section className="relative flex flex-col min-[425px]:justify-center items-center px-4 pt-12 min-[425px]:pt-0 min-h-screen overflow-hidden md:text-center">
       {/* Background */}
       <ResponsiveBackground />
 
       {/* Name Section */}
-      <div className="flex flex-row md:justify-center md:items-center gap-3 md:ml-10">
+      <div className="flex flex-row md:justify-center md:items-center gap-1.5 min-[640px]:gap-2 min-[768px]:gap-3 md:ml-10">
         <h1
-          className="pb-7 font-bold text-white text-3xl md:text-5xl"
+          className="pb-7 font-bold text-[28px] text-white min-[425px]:text-4xl min-[640px]:text-5xl min-[768px]:text-6xl"
           style={{
             animation: "stepBlink 2s infinite",
           }}
@@ -96,7 +96,7 @@ const Hero = () => {
           //
         </h1>
         <motion.h1
-          className="mb-4 font-bold text-[28px] text-white md:text-6xl"
+          className="mb-4 font-bold text-[28px] text-white min-[425px]:text-4xl min-[640px]:text-5xl min-[768px]:text-6xl"
           variants={containerAnimation}
           initial="hidden"
           animate={showName ? "visible" : "hidden"}
@@ -106,13 +106,13 @@ const Hero = () => {
       </div>
 
       {/* Role Section */}
-      <h2 className="mb-6 min-h-[2rem] text-purple-100 text-lg md:text-2xl">
+      <h2 className="mb-6 min-[768px]:min-h-[2rem] text-purple-100 min-[640px]:text-xl min-[768px]:text-2xl">
         {showRole &&
           renderTypingText(TYPING_SECTIONS[1].text, showRole, "role")}
       </h2>
 
       {/* Description Section */}
-      <p className="mb-8 max-w-md min-h-[1.75rem] text-purple-200 text-lg">
+      <p className="mb-8 max-w-md min-h-[1.75rem] text-purple-200 text-sm min-[325px]:text-base min-[768px]:text-lg">
         {showDescription &&
           renderTypingText(
             TYPING_SECTIONS[2].text,
@@ -123,7 +123,7 @@ const Hero = () => {
 
       {/* Buttons */}
       <motion.div
-        className="flex flex-col gap-6 md:gap-4"
+        className="flex min-[425px]:flex-row flex-col gap-6 min-[425px]:gap-4 w-[290px] min-[425px]:w-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: showButtons ? 1 : 0 }}
         transition={{ duration: FADE_DURATION }}
