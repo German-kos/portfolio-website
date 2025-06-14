@@ -2,7 +2,7 @@ import { ShapeDivider } from "../../components";
 
 const About = () => {
   return (
-    <section className="flex flex-col justify-center items-center bg-slate-100 p-8 min-h-screen text-black">
+    <section className="relative flex flex-col justify-center items-center bg-slate-100 p-8 min-h-screen text-black">
       <div>
         <h1>About Section</h1>
         <p>
@@ -11,8 +11,8 @@ const About = () => {
           consequatur exercitationem similique nisi, delectus nostrum dicta
           inventore aspernatur cum. Recusandae similique molestiae quam.
         </p>
+        <ShapeDivider fill="fill-purple-600" id="about" />
       </div>
-      <ShapeDivider fill="fill-purple-600" id="about" />
     </section>
   );
 };
