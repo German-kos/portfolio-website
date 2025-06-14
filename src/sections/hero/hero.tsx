@@ -82,14 +82,14 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex flex-col min-[425px]:justify-center items-center px-4 pt-12 min-[425px]:pt-0 min-h-screen overflow-hidden md:text-center">
+    <section className="relative flex flex-col justify-center items-center px-4 pb-24 min-[425px]:pb-0 min-h-screen overflow-hidden md:text-center">
       {/* Background */}
       <ResponsiveBackground />
 
       {/* Name Section */}
-      <div className="flex flex-row md:justify-center md:items-center gap-1.5 min-[640px]:gap-2 min-[768px]:gap-3 md:ml-10">
+      <div className="flex min-[425px]:flex-row flex-col md:justify-center items-center gap-1.5 min-[640px]:gap-2 min-[768px]:gap-3 md:ml-10">
         <h1
-          className="pb-7 font-bold text-[28px] text-white min-[425px]:text-4xl min-[640px]:text-5xl min-[768px]:text-6xl"
+          className="pb-7 font-bold text-white min-[425px]:text-4xl text-5xl min-[640px]:text-5xl min-[768px]:text-6xl"
           style={{
             animation: "stepBlink 2s infinite",
           }}
