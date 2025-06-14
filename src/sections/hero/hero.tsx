@@ -123,7 +123,7 @@ const Hero = () => {
 
       {/* Buttons */}
       <motion.div
-        className="flex min-[425px]:flex-row flex-col gap-6 min-[425px]:gap-4 w-[290px] min-[425px]:w-auto"
+        className="flex min-[425px]:flex-row flex-col gap-4 w-[290px] min-[425px]:w-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: showButtons ? 1 : 0 }}
         transition={{ duration: FADE_DURATION }}
