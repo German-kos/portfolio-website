@@ -85,7 +85,6 @@ const Hero = () => {
     <section className="relative flex flex-col justify-center items-center px-4 pb-24 min-[425px]:pb-0 min-h-screen overflow-hidden md:text-center">
       {/* Background */}
       <ResponsiveBackground />
-
       {/* Name Section */}
       <div className="flex min-[425px]:flex-row flex-col md:justify-center items-center gap-1.5 min-[640px]:gap-2 min-[768px]:gap-3 md:ml-10">
         <h1
@@ -105,13 +104,11 @@ const Hero = () => {
           {renderTypingText(TYPING_SECTIONS[0].text, showName, "name")}
         </motion.h1>
       </div>
-
       {/* Role Section */}
       <h2 className="mb-6 min-[768px]:min-h-[2rem] text-purple-100 min-[640px]:text-xl min-[768px]:text-2xl">
         {showRole &&
           renderTypingText(TYPING_SECTIONS[1].text, showRole, "role")}
       </h2>
-
       {/* Description Section */}
       <p className="mb-8 max-w-md min-h-[1.75rem] text-purple-200 text-sm min-[325px]:text-base min-[768px]:text-lg">
         {showDescription &&
@@ -121,7 +118,6 @@ const Hero = () => {
             "description"
           )}
       </p>
-
       {/* Buttons */}
       <motion.div
         className="flex min-[425px]:flex-row flex-col gap-4 w-[290px] min-[425px]:w-auto"
@@ -150,6 +146,7 @@ const Hero = () => {
           Learn More About Me
         </motion.button>
       </motion.div>
+
       {/* Shape Divider */}
       <ShapeDivider fill="fill-slate-100" id="hero" />
     </section>
