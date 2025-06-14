@@ -7,6 +7,7 @@ import {
   TYPING_SECTIONS,
   WIGGLE_ANIMATION,
 } from "./constants";
+import { ShapeDivider } from "../../components";
 
 const Hero = () => {
   const typingState = useTypingAnimation(TYPING_SECTIONS, DELAYS.INITIAL);
@@ -149,6 +150,8 @@ const Hero = () => {
           Learn More About Me
         </motion.button>
       </motion.div>
+      {/* Shape Divider */}
+      <ShapeDivider fill="fill-white" />
     </section>
   );
 };
