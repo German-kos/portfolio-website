@@ -55,7 +55,7 @@ const About = () => {
         </div>
       </GlassMacWindow>
 
-      <ShapeDivider fill="#7c3aed" id="about" />
+      <ShapeDivider fill="bg-purple-300" id="about" />
     </section>
   );
 };

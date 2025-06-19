@@ -148,7 +148,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Shape Divider */}
-      <ShapeDivider fill="#f1f5f9" id="hero" />
+      <ShapeDivider fill="#d8b4fe" id="hero" />
     </section>
   );
 };
