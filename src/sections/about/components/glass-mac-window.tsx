@@ -24,7 +24,7 @@ const GlassMacWindow = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         {/* Window Content */}
-        <div className="p-10 sm:p-22 lg:p-26">{children}</div>
+        <div className="p-10 sm:p-22 lg:p-24">{children}</div>
       </div>
     </div>
   );
