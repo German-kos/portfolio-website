@@ -11,10 +11,12 @@ interface ShapeDividerProps {
 
 const ShapeDivider = ({ fill, flip = false }: ShapeDividerProps) => {
   const rotate = flip ? "rotate-180" : "rotate-0";
+  const position = flip ? "top-0" : "bottom-0";
+  const parentPosition = flip ? "-top-[7px]" : "-bottom-[7px]";
 
   return (
     <div
-      className={`-bottom-[6px] left-0 absolute w-full overflow-hidden ${rotate}`}
+      className={`${parentPosition} left-0 absolute w-full overflow-hidden ${rotate}`}
     >
       <div className="absolute w-full">
         <Wave
@@ -26,7 +28,7 @@ const ShapeDivider = ({ fill, flip = false }: ShapeDividerProps) => {
             speed: 0.15,
             points: 7,
           }}
-          className="bottom-0 opacity-20"
+          className={`${position} opacity-20`}
         />
       </div>
       <div className="absolute w-full">
@@ -39,7 +41,7 @@ const ShapeDivider = ({ fill, flip = false }: ShapeDividerProps) => {
             speed: 0.12,
             points: 8,
           }}
-          className="bottom-0 opacity-50"
+          className={`${position} opacity-50`}
         />
       </div>
       <Wave
