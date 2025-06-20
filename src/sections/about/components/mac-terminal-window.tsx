@@ -7,7 +7,7 @@ interface MacTerminalWindowProps {
 
 const MacTerminalWindow: React.FC<MacTerminalWindowProps> = ({
   children,
-  title = "german@portfolio:~$",
+  title = "german@about:~$",
 }) => {
   return (
     <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-6xl">
@@ -37,11 +37,11 @@ const MacTerminalWindow: React.FC<MacTerminalWindowProps> = ({
         <div className="bg-gray-900/80 backdrop-blur-sm p-6 sm:p-8 lg:p-10">
           {/* Terminal Prompt Line */}
           <div className="mb-6 text-sm sm:text-base terminal-font">
-            <span className="text-purple-300">german@portfolio</span>
-            <span className="text-white">:</span>
-            <span className="text-pink-300">~</span>
-            <span className="text-white">$ </span>
-            <span className="text-rose-200">cat about.md</span>
+            <span className="text-purple-300 terminal-font">german@about</span>
+            <span className="text-white terminal-font">:</span>
+            <span className="text-pink-300 terminal-font">~</span>
+            <span className="text-white terminal-font">$ </span>
+            <span className="text-rose-200 terminal-font">cat about.md</span>
           </div>
 
           {/* Terminal Output */}
