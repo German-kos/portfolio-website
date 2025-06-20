@@ -2,7 +2,7 @@ const GlassMacWindow = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-6xl">
       {/* Window Container */}
-      <div className="bg-white/20 shadow-2xl shadow-black/10 backdrop-blur-xl border border-white/30 rounded-xl sm:rounded-2xl overflow-hidden">
+      <div className="bg-white/20 shadow-black/10 shadow-lg backdrop-blur-xl border border-white/30 rounded-xl sm:rounded-2xl overflow-hidden">
         {/* MacOS Title Bar */}
         <div className="flex justify-between items-center bg-white/10 px-4 sm:px-6 py-4 sm:py-5 border-white/20 border-b">
           {/* Traffic Light Buttons */}
