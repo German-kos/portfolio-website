@@ -150,3 +150,51 @@ body {
 .animate-blink {
   animation: blink 1s infinite steps(1, end);
 }
+
+@keyframes wobblyBlob {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0px, 0px) scale(1);
+  }
+  20% {
+    border-radius: 54% 46% 38% 62% / 68% 32% 68% 32%;
+    transform: translate(-1px, -0.5px) scale(1.005);
+  }
+  40% {
+    border-radius: 48% 52% 46% 54% / 64% 36% 64% 36%;
+    transform: translate(0.5px, 1px) scale(0.995);
+  }
+  60% {
+    border-radius: 52% 48% 42% 58% / 56% 44% 56% 44%;
+    transform: translate(1px, -0.5px) scale(1.003);
+  }
+  80% {
+    border-radius: 58% 42% 36% 64% / 62% 38% 62% 38%;
+    transform: translate(-0.5px, 0.5px) scale(0.998);
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes wobblyBlobImage {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  20% {
+    border-radius: 54% 46% 38% 62% / 68% 32% 68% 32%;
+  }
+  40% {
+    border-radius: 48% 52% 46% 54% / 64% 36% 64% 36%;
+  }
+  60% {
+    border-radius: 52% 48% 42% 58% / 56% 44% 56% 44%;
+  }
+  80% {
+    border-radius: 58% 42% 36% 64% / 62% 38% 62% 38%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
