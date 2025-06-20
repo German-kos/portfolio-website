@@ -3,7 +3,12 @@ import { GlassMacWindow } from "./components";
 
 const About = () => {
   return (
-    <section className="relative flex flex-col justify-center items-center bg-gradient-to-b from-purple-300 to-red-300 p-8 min-h-screen text-black">
+    <section
+      className="relative flex flex-col justify-center items-center p-8 py-16 md:py-24 lg:py-24 text-black"
+      style={{
+        background: "linear-gradient(to bottom, #d8b4fe, #fca5a5)",
+      }}
+    >
       <GlassMacWindow>
         <div className="space-y-8">
           <h1 className="font-bold text-gray-900 text-4xl lg:text-5xl md:text-left text-center">
@@ -55,7 +60,7 @@ const About = () => {
         </div>
       </GlassMacWindow>
 
-      {/* <ShapeDivider fill="bg-purple-300" id="about" /> */}
+      {/* <ShapeDivider fill="bg-purple-300" /> */}
     </section>
   );
 };
