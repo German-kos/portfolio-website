@@ -27,7 +27,7 @@ const About = () => {
               </p>
 
               {/* Skills Preview */}
-              <div className="flex flex-wrap gap-2">
+              {/* <div className="flex flex-wrap gap-2">
                 <span className="bg-rose-400/20 px-3 py-1 rounded-full font-medium text-rose-700 text-sm">
                   React
                 </span>
@@ -40,7 +40,7 @@ const About = () => {
                 <span className="bg-rose-400/20 px-3 py-1 rounded-full font-medium text-rose-700 text-sm">
                   Tailwind CSS
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Profile Image */}
