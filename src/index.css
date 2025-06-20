@@ -3,7 +3,7 @@
 
 .terminal-font {
   font-family: "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New",
-    monospace;
+    monospace !important;
   font-weight: 400;
   letter-spacing: 0;
 }
