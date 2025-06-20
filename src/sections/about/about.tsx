@@ -1,4 +1,4 @@
-import { ShapeDivider } from "../../components";
+// import { ShapeDivider } from "../../components";
 import { GlassMacWindow } from "./components";
 
 const About = () => {
