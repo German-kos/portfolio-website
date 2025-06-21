@@ -5,7 +5,7 @@ import MatrixGridBackground from "./components/matrix-grid-background";
 const Skills = () => {
   return (
     <section
-      className="relative flex flex-col justify-center items-center p-8 py-36 text-white"
+      className="relative flex flex-col justify-center items-center p-8 py-50 text-white"
       style={{
         background: `
           radial-gradient(circle at 25% 25%, #9333ea 0%, transparent 50%),
@@ -32,6 +32,7 @@ const Skills = () => {
 
       {/* Shape Divider */}
       <ShapeDivider flip={true} fill="#fca5a5" />
+      <ShapeDivider flip={false} fill="#fca5a5" />
     </section>
   );
 };
