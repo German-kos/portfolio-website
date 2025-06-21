@@ -1,4 +1,9 @@
+import { motion } from "framer-motion";
+import { useAnimatedDock, useDockItem } from "../../../hooks";
+
 const Cards = () => {
+  const { mouseX, mouseY } = useAnimatedDock();
+
   const skills = [
     {
       text: "React",
@@ -37,17 +42,27 @@ const Cards = () => {
       path: "M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187",
     },
   ];
-  return (
-    <div className="gap-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 max-w-4xl">
-      {skills.map((skill) => (
-        <div
-          key={skill.text}
-          className="bg-black/20 hover:bg-black/30 backdrop-blur-md p-4 border border-white/30 rounded-lg text-center hover:scale-110 transition-all duration-300"
-        >
+
+  const DockIcon = ({
+    skill,
+  }: {
+    skill: (typeof skills)[0];
+    index: number;
+  }) => {
+    const { ref, scale, textOpacity } = useDockItem(mouseX, mouseY);
+
+    return (
+      <motion.div
+        ref={ref}
+        className="flex flex-col justify-end items-center"
+        style={{ scale }}
+      >
+        {/* Icon */}
+        <motion.div className="flex justify-center items-center mb-2 w-16 h-16">
           <svg
-            className={`${skill.color} w-12 h-12 mb-4 mx-auto`}
+            className={`${skill.color} w-12 h-12`}
             style={{
-              filter: "drop-shadow(0 0 6px rgba(255,255,255,0.2))",
+              filter: "drop-shadow(0 0 8px rgba(255,255,255,0.3))",
             }}
             role="img"
             viewBox="0 0 24 24"
@@ -55,10 +70,43 @@ const Cards = () => {
           >
             <path d={skill.path} />
           </svg>
-          <div className="font-semibold text-lg">{skill.text}</div>
-        </div>
-      ))}
-    </div>
+        </motion.div>
+
+        {/* Dynamic Text with Opacity */}
+        <motion.div
+          className="bg-black/50 backdrop-blur-sm px-2 py-1 rounded font-medium text-white text-sm text-center"
+          style={{
+            opacity: textOpacity,
+            pointerEvents: "none",
+          }}
+        >
+          {skill.text}
+        </motion.div>
+      </motion.div>
+    );
+  };
+
+  return (
+    <motion.div
+      onMouseMove={(e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        mouseX.set(x);
+        mouseY.set(y);
+      }}
+      onMouseLeave={() => {
+        mouseX.set(Infinity);
+        mouseY.set(Infinity);
+      }}
+      className="flex justify-center items-end"
+    >
+      {/* Dock Container */}
+      <div className="flex justify-center items-end gap-2 bg-black/20 shadow-2xl backdrop-blur-xl px-6 py-4 border border-white/20 rounded-2xl">
+        {skills.map((skill, index) => (
+          <DockIcon key={skill.text} skill={skill} index={index} />
+        ))}
+      </div>
+    </motion.div>
   );
 };
 
