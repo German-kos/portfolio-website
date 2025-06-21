@@ -3,7 +3,7 @@ import { BlobProfileImage, MacTerminalWindow } from "./components"; // Changed t
 const About = () => {
   return (
     <section
-      className="relative flex flex-col justify-center items-center p-8 py-16 md:py-24 lg:py-10 text-black"
+      className="relative flex flex-col justify-center items-center p-8 py-16 md:py-8 lg:py-4 text-black"
       style={{
         background: "linear-gradient(to bottom, #d8b4fe, #fca5a5)",
       }}
