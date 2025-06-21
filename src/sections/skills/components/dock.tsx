@@ -135,7 +135,7 @@ const Dock = () => {
             opacity: textOpacity,
           }}
         >
-          <div className="bg-black/50 backdrop-blur-sm px-2 py-1 rounded font-medium text-white text-sm text-center whitespace-nowrap">
+          <div className="bg-black/30 backdrop-blur-sm px-2 py-1 rounded font-medium text-white text-sm text-center whitespace-nowrap">
             {skill.text}
           </div>
         </motion.div>
@@ -160,7 +160,7 @@ const Dock = () => {
     >
       {/* Darker dock container */}
       <motion.div
-        className={`flex justify-center items-center bg-gray-900/80 shadow-2xl backdrop-blur-xl py-3 px-6 border border-gray-700/50 rounded-2xl transition-all duration-300 ease-in-out ${
+        className={`flex justify-center items-center bg-gray-900/80 shadow-2xl backdrop-blur-xl py-3 px-6 border border-white/40 rounded-2xl transition-all duration-300 ease-in-out ${
           isHovered ? "gap-8" : "gap-3"
         }`}
         onMouseEnter={() => setIsHovered(true)}
