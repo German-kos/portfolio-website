@@ -1,5 +1,5 @@
 import { ShapeDivider } from "../../components";
-import { Cards } from "./components";
+import { Dock } from "./components";
 import MatrixGridBackground from "./components/matrix-grid-background";
 
 const Skills = () => {
@@ -27,7 +27,7 @@ const Skills = () => {
         </div>
 
         {/* Skills */}
-        <Cards />
+        <Dock />
       </div>
 
       {/* Shape Divider */}

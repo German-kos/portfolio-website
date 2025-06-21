@@ -53,7 +53,7 @@ const useDockItem = (
   };
 };
 
-const Cards = () => {
+const Dock = () => {
   const { mouseX, mouseY } = useAnimatedDock();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -174,4 +174,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Dock;
