@@ -1,3 +1,5 @@
+import { GlassMacWindow } from "./components";
+
 const Contact = () => {
   return (
     <section
@@ -6,7 +8,9 @@ const Contact = () => {
         background: "linear-gradient(to bottom,  #fca5a5, #d8b4fe)",
       }}
     >
-      <div className="py-50">Contact me now!</div>
+      <div className="py-50">
+        <GlassMacWindow>aaa</GlassMacWindow>
+      </div>
     </section>
   );
 };
