@@ -1,2 +1,2 @@
 export * from "./skills";
-export * from "./contact-icons";
+export * from "./contact-data";
