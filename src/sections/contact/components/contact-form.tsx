@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import FormField from "./form-field";
 
 interface FormData {
   name: string;
@@ -145,79 +146,40 @@ const ContactForm: React.FC = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Personal Information Row */}
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
-          {/* Name Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="name"
-              className="block font-medium text-gray-700 text-sm"
-            >
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-                errors.name
-                  ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-              } focus:outline-none focus:ring-2`}
-              placeholder="Your full name"
-            />
-            <AnimatePresence>
-              {errors.name && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="text-red-600 text-sm"
-                >
-                  {errors.name}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Email Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="email"
-              className="block font-medium text-gray-700 text-sm"
-            >
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-                errors.email
-                  ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-              } focus:outline-none focus:ring-2`}
-              placeholder="your.email@example.com"
-            />
-            <AnimatePresence>
-              {errors.email && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="text-red-600 text-sm"
-                >
-                  {errors.email}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
+          {/* form-field Name replacement test */}
+          <FormField
+            label="Name or Company Name"
+            name="name"
+            type="text"
+            value={formData.name}
+            placeholder="Enter a name"
+            onChange={handleInputChange}
+            errorMessage={errors.name}
+          />
+          {/* form-field Email replacement test */}
+          <FormField
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            placeholder="your.email@example.com"
+            onChange={handleInputChange}
+            errorMessage={errors.email}
+          />
         </div>
-
-        {/* Project Information Row */}
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
+          {/* form-field Subject replacement test */}
+          <FormField
+            label="Subject"
+            name="subject"
+            type="text"
+            value={formData.subject}
+            placeholder="What's this about?"
+            onChange={handleInputChange}
+            errorMessage={errors.subject}
+          />
+
+          {/* Project Information Row */}
           {/* Inquiry Type Field */}
           <div className="space-y-2">
             <label
@@ -253,41 +215,6 @@ const ContactForm: React.FC = () => {
                   className="text-red-600 text-sm"
                 >
                   {errors.inquiryType}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Subject Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="subject"
-              className="block font-medium text-gray-700 text-sm"
-            >
-              Subject *
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
-              className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-                errors.subject
-                  ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-              } focus:outline-none focus:ring-2`}
-              placeholder="Brief description of your project"
-            />
-            <AnimatePresence>
-              {errors.subject && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="text-red-600 text-sm"
-                >
-                  {errors.subject}
                 </motion.p>
               )}
             </AnimatePresence>
