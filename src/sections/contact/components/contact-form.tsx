@@ -231,7 +231,7 @@ const ContactForm: React.FC = () => {
               name="inquiryType"
               value={formData.inquiryType}
               onChange={handleInputChange}
-              className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
+              className={`w-full px-4 py-2 border hover:cursor-pointer rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
                 errors.inquiryType
                   ? "border-red-500 focus:border-red-500 focus:ring-red-200"
                   : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
@@ -346,7 +346,7 @@ const ContactForm: React.FC = () => {
           className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all duration-200 ${
             isSubmitting
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 hover:shadow-lg"
+              : "bg-gradient-to-r hover:cursor-pointer from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 hover:shadow-lg"
           }`}
           whileHover={!isSubmitting ? { scale: 1.02 } : {}}
           whileTap={!isSubmitting ? { scale: 0.98 } : {}}
