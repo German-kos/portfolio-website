@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import FormField from "./form-field";
+import InputField from "./input-field";
 
 interface FormData {
   name: string;
@@ -147,7 +147,7 @@ const ContactForm: React.FC = () => {
         {/* Personal Information Row */}
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
           {/* form-field Name replacement test */}
-          <FormField
+          <InputField
             label="Name or Company Name"
             name="name"
             type="text"
@@ -157,7 +157,7 @@ const ContactForm: React.FC = () => {
             errorMessage={errors.name}
           />
           {/* form-field Email replacement test */}
-          <FormField
+          <InputField
             label="Email"
             name="email"
             type="email"
@@ -169,7 +169,7 @@ const ContactForm: React.FC = () => {
         </div>
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
           {/* form-field Subject replacement test */}
-          <FormField
+          <InputField
             label="Subject"
             name="subject"
             type="text"
@@ -181,7 +181,7 @@ const ContactForm: React.FC = () => {
 
           {/* Project Information Row */}
           {/* Inquiry Type Field */}
-          <div className="space-y-2">
+          <div className="spacey-2">
             <label
               htmlFor="inquiryType"
               className="block font-medium text-gray-700 text-sm"

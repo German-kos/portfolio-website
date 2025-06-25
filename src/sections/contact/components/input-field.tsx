@@ -14,7 +14,7 @@ interface FormFieldProps {
   errorMessage?: string | null;
 }
 
-const FormField = ({
+const InputField = ({
   label,
   name,
   type,
@@ -26,7 +26,7 @@ const FormField = ({
   return (
     <div>
       <label
-        className="block pb-1 font-medium text-gray-700 text-sm"
+        className="block pb-1 pl-2 font-medium text-gray-700 text-sm"
         htmlFor={name}
       >
         {label}
@@ -60,4 +60,4 @@ const FormField = ({
   );
 };
 
-export default FormField;
+export default InputField;
