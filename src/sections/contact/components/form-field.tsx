@@ -83,6 +83,9 @@ const FormField = ({
           value={value}
           onChange={(e) => onChange(e)}
           placeholder={placeholder}
+          autoComplete={
+            type === "email" ? "email" : name === "name" ? "name" : undefined
+          }
         />
       ) : fieldType === "textarea" ? (
         // Text Area Option
@@ -101,6 +104,9 @@ const FormField = ({
           />
           {/* Character counter inside the textarea */}
           <span
+            id={`${name}-char-count`}
+            aria-live="polite"
+            aria-label={`Character count: ${formMessage.length} of 1000`}
             className={`absolute bottom-2 right-3 text-xs pointer-events-none ${
               formMessage.length >= 20 ? "text-gray-400" : "text-red-400"
             }`}
@@ -130,12 +136,16 @@ const FormField = ({
       <AnimatePresence>
         {errorMessage && (
           <motion.p
+            id={errorId}
+            aria-live="assertive"
+            role="alert"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="text-red-600 text-sm"
           >
-            {errorMessage}
+            {/* Screen reader text for error */}
+            <span className="sr-only">Error: </span> {errorMessage}
           </motion.p>
         )}
       </AnimatePresence>
