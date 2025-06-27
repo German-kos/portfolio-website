@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import FormField from "./form-field";
+import { FormField } from ".";
 
 interface FormData {
   name: string;
