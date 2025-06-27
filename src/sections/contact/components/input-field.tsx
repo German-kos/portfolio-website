@@ -5,13 +5,19 @@ interface SelectOption {
   label: string;
 }
 
-// This interface expects selectOptions to be an optional array of SelectOption objects,
-// which matches the typical structure for select dropdowns.
+type InputFieldType = "text" | "email" | "select" | "textarea";
+
+type FieldType = "input" | "textarea" | "select";
+
+type errorMessageType = string | null;
+
+type FormMessageType = string | "";
+
 interface FormFieldProps {
   label: string;
   name: string;
-  type: "text" | "email" | "select" | "textarea";
-  fieldType: "input" | "textarea" | "select";
+  type: InputFieldType;
+  fieldType: FieldType;
   value: string;
   placeholder?: string;
   onChange: (
@@ -19,13 +25,10 @@ interface FormFieldProps {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => void;
-  errorMessage?: string | null;
+  errorMessage?: errorMessageType;
   selectOptions?: SelectOption[];
+  formMessage?: FormMessageType;
 }
-
-// To Do:
-// - Text Area should be changes with css
-// - Select should be implemented, styled, and need to add options props
 
 const InputField = ({
   label,
@@ -33,13 +36,15 @@ const InputField = ({
   type,
   value,
   onChange,
-  errorMessage,
+  errorMessage = "",
   placeholder = "",
   fieldType,
   selectOptions = [],
+  formMessage = "",
 }: FormFieldProps) => {
   return (
     <div>
+      {/* Label for the input field */}
       <label
         className="block pb-1 pl-2 font-medium text-gray-700 text-sm"
         htmlFor={name}
@@ -48,6 +53,7 @@ const InputField = ({
       </label>
 
       {fieldType === "input" ? (
+        // Input Field Option
         <input
           className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
             errorMessage
@@ -62,20 +68,33 @@ const InputField = ({
           placeholder={placeholder}
         />
       ) : fieldType === "textarea" ? (
-        <textarea
-          className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-            errorMessage
-              ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-              : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-          } focus:outline-none focus:ring-2`}
-          id={name}
-          name={name}
-          value={value}
-          onChange={(e) => onChange(e)}
-          placeholder={placeholder}
-          rows={4}
-        />
+        // Text Area Option
+        <div className="relative">
+          <textarea
+            className={`w-full px-4 resize-none py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
+              errorMessage
+                ? "border-red-500 focus:border-red-500 focus:ring-red-200"
+                : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
+            } focus:outline-none focus:ring-2`}
+            id={name}
+            name={name}
+            value={value}
+            onChange={(e) => onChange(e)}
+            placeholder={placeholder}
+            rows={4}
+            maxLength={1000}
+          />
+          {/* Character counter inside the textarea */}
+          <span
+            className={`absolute bottom-2 right-3 text-xs pointer-events-none ${
+              formMessage.length >= 20 ? "text-gray-400" : "text-red-400"
+            }`}
+          >
+            {formMessage.length}/1000
+          </span>
+        </div>
       ) : fieldType === "select" ? (
+        // Select Field Option
         <select
           className={`w-full px-4 py-2.5 border hover:cursor-pointer rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
             errorMessage
