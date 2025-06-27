@@ -1,25 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FormField } from ".";
-
-interface FormData {
-  name: string;
-  email: string;
-  inquiryType: string;
-  subject: string;
-  message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  inquiryType?: string;
-  subject?: string;
-  message?: string;
-}
+import { validateEmail } from "../../../utils";
+import type { FormDataInterface, FormErrors } from "../../../types";
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataInterface>({
     name: "",
     email: "",
     inquiryType: "",
@@ -40,12 +26,6 @@ const ContactForm: React.FC = () => {
     { value: "consultation", label: "Consultation" },
     { value: "other", label: "Other" },
   ];
-
-  // Validation functions
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
