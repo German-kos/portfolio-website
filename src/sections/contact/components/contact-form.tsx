@@ -4,6 +4,7 @@ import { FormField } from ".";
 import { validateForm } from "../../../utils";
 import type { FormDataInterface, FormErrors } from "../../../types";
 import { inquiryOptions } from "../../../data";
+import { submitContactForm } from "../../../services";
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormDataInterface>({
@@ -54,11 +55,7 @@ const ContactForm: React.FC = () => {
     setSubmitStatus("idle");
 
     try {
-      // Simulate API call - replace with your actual endpoint
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Log form data (replace with actual API call)
-      console.log("Form submitted:", formData);
+      await submitContactForm(formData);
 
       setSubmitStatus("success");
       // Reset form on success
