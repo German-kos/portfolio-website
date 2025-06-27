@@ -182,7 +182,6 @@ const ContactForm: React.FC = () => {
             errorMessage={errors.subject}
           />
 
-          {/* Project Information Row */}
           {/* Inquiry Type Field */}
           <InputField
             label="I'm looking for"
@@ -197,6 +196,18 @@ const ContactForm: React.FC = () => {
         </div>
 
         {/* Message Field - Full Width */}
+        <InputField
+          label="Message"
+          name="message"
+          type="textarea"
+          fieldType="textarea"
+          value={formData.message}
+          placeholder="Tell me about your project, timeline, budget, and what you're looking for..."
+          onChange={handleInputChange}
+          errorMessage={errors.message}
+          formMessage={formData.message}
+        />
+
         <div className="space-y-2">
           <label
             htmlFor="message"
