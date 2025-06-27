@@ -42,6 +42,25 @@ const FormField = ({
   selectOptions = [],
   formMessage = "",
 }: FormFieldProps) => {
+  // Pre-made styles
+  const baseStyles =
+    "w-full px-4 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 focus:outline-none focus:ring-2";
+
+  const errorStyles = errorMessage
+    ? "border-red-500 focus:border-red-500 focus:ring-red-200"
+    : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200";
+
+  const getFieldStyles = (fieldType: FieldType) => {
+    const paddingY = fieldType === "select" ? "py-2.5" : "py-2";
+    const extraStyles = fieldType === "select" ? "hover:cursor-pointer" : "";
+    const resizeStyle = fieldType === "textarea" ? "resize-none" : "";
+
+    return `${baseStyles} ${paddingY} ${errorStyles} ${extraStyles} ${resizeStyle}`.trim();
+  };
+
+  const fieldId = `field-${name}`;
+  const errorId = `${name}-error`;
+
   return (
     <div>
       {/* Label for the input field */}
@@ -55,13 +74,11 @@ const FormField = ({
       {fieldType === "input" ? (
         // Input Field Option
         <input
-          className={`w-full px-4 py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-            errorMessage
-              ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-              : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-          } focus:outline-none focus:ring-2`}
+          className={getFieldStyles("input")}
           type={type}
-          id={name}
+          id={fieldId}
+          aria-invalid={!!errorMessage}
+          aria-errormessage={errorId}
           name={name}
           value={value}
           onChange={(e) => onChange(e)}
@@ -71,12 +88,10 @@ const FormField = ({
         // Text Area Option
         <div className="relative">
           <textarea
-            className={`w-full px-4 resize-none py-2 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-              errorMessage
-                ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-            } focus:outline-none focus:ring-2`}
-            id={name}
+            className={getFieldStyles("textarea")}
+            id={fieldId}
+            aria-invalid={!!errorMessage}
+            aria-errormessage={errorId}
             name={name}
             value={value}
             onChange={(e) => onChange(e)}
@@ -96,12 +111,10 @@ const FormField = ({
       ) : fieldType === "select" ? (
         // Select Field Option
         <select
-          className={`w-full px-4 py-2.5 border hover:cursor-pointer rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-            errorMessage
-              ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-              : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-          } focus:outline-none focus:ring-2`}
-          id={name}
+          className={getFieldStyles("select")}
+          id={fieldId}
+          aria-invalid={!!errorMessage}
+          aria-errormessage={errorId}
           name={name}
           value={value}
           onChange={(e) => onChange(e)}
