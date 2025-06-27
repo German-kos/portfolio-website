@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FormField } from ".";
-import { validateEmail } from "../../../utils";
+import { validateForm } from "../../../utils";
 import type { FormDataInterface, FormErrors } from "../../../types";
+import { inquiryOptions } from "../../../data";
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormDataInterface>({
@@ -18,54 +19,6 @@ const ContactForm: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-
-  const inquiryOptions = [
-    { value: "freelance", label: "Freelance Project" },
-    { value: "fulltime", label: "Full-time Position" },
-    { value: "contract", label: "Contract Work" },
-    { value: "consultation", label: "Consultation" },
-    { value: "other", label: "Other" },
-  ];
-
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
-    }
-
-    // Email validation
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    // Inquiry type validation
-    if (!formData.inquiryType) {
-      newErrors.inquiryType = "Please select an inquiry type";
-    }
-
-    // Subject validation
-    if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
-    } else if (formData.subject.trim().length < 5) {
-      newErrors.subject = "Subject must be at least 5 characters";
-    }
-
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    } else if (formData.message.trim().length < 20) {
-      newErrors.message = "Message must be at least 20 characters";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -90,7 +43,10 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    const validationErrors = validateForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
