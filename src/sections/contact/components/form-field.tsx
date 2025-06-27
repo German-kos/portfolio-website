@@ -5,7 +5,7 @@ interface SelectOption {
   label: string;
 }
 
-type InputFieldType = "text" | "email" | "select" | "textarea";
+type FormFieldType = "text" | "email" | "select" | "textarea";
 
 type FieldType = "input" | "textarea" | "select";
 
@@ -16,7 +16,7 @@ type FormMessageType = string | "";
 interface FormFieldProps {
   label: string;
   name: string;
-  type: InputFieldType;
+  type: FormFieldType;
   fieldType: FieldType;
   value: string;
   placeholder?: string;
@@ -30,7 +30,7 @@ interface FormFieldProps {
   formMessage?: FormMessageType;
 }
 
-const InputField = ({
+const FormField = ({
   label,
   name,
   type,
@@ -130,4 +130,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default FormField;
