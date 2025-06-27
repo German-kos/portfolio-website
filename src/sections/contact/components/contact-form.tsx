@@ -208,50 +208,6 @@ const ContactForm: React.FC = () => {
           formMessage={formData.message}
         />
 
-        <div className="space-y-2">
-          <label
-            htmlFor="message"
-            className="block font-medium text-gray-700 text-sm"
-          >
-            Message *
-          </label>
-          <div className="relative">
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              rows={4}
-              className={`w-full px-4 py-2 pb-8 border rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 resize-none ${
-                errors.message
-                  ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-              } focus:outline-none focus:ring-2`}
-              placeholder="Tell me about your project, timeline, budget, and what you're looking for..."
-            />
-            {/* Character counter inside the textarea */}
-            <span
-              className={`absolute bottom-2 right-3 text-xs pointer-events-none ${
-                formData.message.length >= 20 ? "text-gray-400" : "text-red-400"
-              }`}
-            >
-              {formData.message.length}/1000
-            </span>
-          </div>
-          <AnimatePresence>
-            {errors.message && (
-              <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="text-red-600 text-sm"
-              >
-                {errors.message}
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-
         {/* Submit Button */}
         <motion.button
           type="submit"
