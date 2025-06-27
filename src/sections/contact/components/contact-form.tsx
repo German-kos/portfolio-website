@@ -184,44 +184,16 @@ const ContactForm: React.FC = () => {
 
           {/* Project Information Row */}
           {/* Inquiry Type Field */}
-          <div className="spacey-2">
-            <label
-              htmlFor="inquiryType"
-              className="block font-medium text-gray-700 text-sm"
-            >
-              I'm looking for *
-            </label>
-            <select
-              id="inquiryType"
-              name="inquiryType"
-              value={formData.inquiryType}
-              onChange={handleInputChange}
-              className={`w-full px-4 py-2 border hover:cursor-pointer rounded-lg bg-white/70 backdrop-blur-sm transition-all duration-200 ${
-                errors.inquiryType
-                  ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
-              } focus:outline-none focus:ring-2`}
-            >
-              <option value="">Select an option...</option>
-              {inquiryOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <AnimatePresence>
-              {errors.inquiryType && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="text-red-600 text-sm"
-                >
-                  {errors.inquiryType}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
+          <InputField
+            label="I'm looking for"
+            name="inquiryType"
+            type="select"
+            fieldType="select"
+            value={formData.inquiryType}
+            selectOptions={inquiryOptions}
+            onChange={handleInputChange}
+            errorMessage={errors.inquiryType}
+          />
         </div>
 
         {/* Message Field - Full Width */}
