@@ -1,4 +1,4 @@
-import { About, Contact, Hero, Skills } from "./sections";
+import { About, Contact, Footer, Hero, Skills } from "./sections";
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <About />
       <Skills />
       <Contact />
+      <Footer />
     </>
   );
 }
