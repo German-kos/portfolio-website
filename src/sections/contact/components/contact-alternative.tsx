@@ -7,7 +7,7 @@ const ContactAlternative = () => {
         <button
           key={index}
           onClick={item.action}
-          className={`flex items-center gap-3 ${item.bgColor} ${item.hoverBgColor} shadow-lg hover:shadow-xl hover:border-white hover:cursor-pointer backdrop-blur-sm px-6 py-4 border border-white/50 rounded-xl min-w-[160px] ${item.textColor} hover:scale-105 transition-all duration-300`}
+          className={`flex items-center gap-3 justify-center  ${item.bgColor} ${item.hoverBgColor} shadow-lg hover:shadow-xl hover:border-white hover:cursor-pointer backdrop-blur-sm px-6 py-4 border border-white/50 rounded-xl w-[180px] ${item.textColor} hover:scale-105 transition-all duration-300`}
         >
           <svg
             className={`w-8 h-8`}
