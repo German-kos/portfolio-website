@@ -8,6 +8,10 @@
   letter-spacing: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Set Space Grotesk for headings */
 h1,
 h2,
